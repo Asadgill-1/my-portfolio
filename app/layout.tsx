@@ -1,23 +1,28 @@
 import type { Metadata, Viewport } from "next";
-import { Space_Grotesk, Inter, JetBrains_Mono } from "next/font/google";
+import { Fraunces, Inter_Tight, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
-const spaceGrotesk = Space_Grotesk({
+// Fraunces — characterful variable soft-serif. The "wonky" high-contrast
+// display face is the editorial break from the engineered-sans AI default.
+const fraunces = Fraunces({
   subsets: ["latin"],
   display: "swap",
-  variable: "--font-space-grotesk",
+  variable: "--font-fraunces",
+  axes: ["SOFT", "WONK", "opsz"],
 });
 
-const inter = Inter({
+const interTight = Inter_Tight({
   subsets: ["latin"],
   display: "swap",
-  variable: "--font-geist",
+  variable: "--font-inter-tight",
+  weight: ["300", "400", "500", "600", "700"],
 });
 
 const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
   display: "swap",
-  variable: "--font-geist-mono",
+  variable: "--font-jetbrains",
+  weight: ["400", "500"],
 });
 
 const SITE_URL = "https://autonomous-world.vercel.app";
@@ -56,7 +61,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#060912",
+  themeColor: "#0E0B1A",
   width: "device-width",
   initialScale: 1,
 };
@@ -69,7 +74,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${spaceGrotesk.variable} ${inter.variable} ${jetbrainsMono.variable}`}
+      className={`${fraunces.variable} ${interTight.variable} ${jetbrainsMono.variable}`}
     >
       <body>{children}</body>
     </html>

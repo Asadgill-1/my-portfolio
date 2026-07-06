@@ -25,6 +25,26 @@ export const site = {
     { label: "Contact", href: "#contact" },
   ] as const,
 
+  // Marquee — tools & platforms we wire together. Loops in the strip.
+  tools: [
+    "Stripe",
+    "HubSpot",
+    "Notion",
+    "Airtable",
+    "Slack",
+    "Gmail",
+    "Make",
+    "n8n",
+    "Zapier",
+    "OpenAI",
+    "Supabase",
+    "Postgres",
+    "Vercel",
+    "Twilio",
+    "Calendly",
+    "Google Sheets",
+  ],
+
   // What we do. Three pillars — automations, websites, integrations.
   capabilities: [
     {

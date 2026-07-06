@@ -14,7 +14,6 @@ export default function Nav() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Close mobile menu on resize up.
   useEffect(() => {
     const onResize = () => window.innerWidth >= 768 && setOpen(false);
     window.addEventListener("resize", onResize);
@@ -23,10 +22,9 @@ export default function Nav() {
 
   return (
     <>
-      {/* Skip link — keyboard users jump straight to content. */}
       <a
         href="#main"
-        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-md focus:bg-signal focus:px-4 focus:py-2 focus:text-ink"
+        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-md focus:bg-saffron focus:px-4 focus:py-2 focus:text-ink"
       >
         Skip to content
       </a>
@@ -44,12 +42,13 @@ export default function Nav() {
         >
           <a
             href="#top"
-            className="flex items-center gap-2 font-display text-base font-semibold tracking-tight text-text"
+            className="flex items-center gap-2.5 font-display text-lg font-medium tracking-tight"
+            data-cursor="hover"
           >
             <span
               aria-hidden="true"
-              className="inline-block h-2.5 w-2.5 rounded-full bg-signal"
-              style={{ boxShadow: "0 0 12px var(--signal)" }}
+              className="inline-block h-2.5 w-2.5 rounded-full bg-saffron"
+              style={{ boxShadow: "0 0 12px var(--saffron)" }}
             />
             {site.brand}
           </a>
@@ -59,7 +58,8 @@ export default function Nav() {
               <li key={item.href}>
                 <a
                   href={item.href}
-                  className="font-mono text-2xs uppercase tracking-widest text-muted transition-colors hover:text-text"
+                  className="font-mono text-2xs uppercase tracking-[0.2em] text-muted transition-colors hover:text-bone"
+                  data-cursor="hover"
                 >
                   {item.label}
                 </a>
@@ -70,18 +70,18 @@ export default function Nav() {
           <a
             href="#contact"
             className="hidden md:inline-flex btn-primary text-sm"
+            data-cursor="hover"
           >
             Start a project
           </a>
 
-          {/* Mobile toggle — 44×44 hit area. */}
           <button
             type="button"
             onClick={() => setOpen((v) => !v)}
             aria-expanded={open}
             aria-controls="mobile-menu"
             aria-label={open ? "Close menu" : "Open menu"}
-            className="flex h-11 w-11 items-center justify-center rounded-md border border-line text-text md:hidden"
+            className="flex h-11 w-11 items-center justify-center rounded-md border border-line text-bone md:hidden"
           >
             <svg
               viewBox="0 0 24 24"
@@ -109,7 +109,6 @@ export default function Nav() {
           </button>
         </nav>
 
-        {/* Mobile menu */}
         {open && (
           <div
             id="mobile-menu"
@@ -121,7 +120,7 @@ export default function Nav() {
                   <a
                     href={item.href}
                     onClick={() => setOpen(false)}
-                    className="block py-3 font-mono text-xs uppercase tracking-widest text-muted hover:text-text"
+                    className="block py-3 font-mono text-xs uppercase tracking-[0.2em] text-muted hover:text-bone"
                   >
                     {item.label}
                   </a>

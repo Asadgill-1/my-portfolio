@@ -1,7 +1,7 @@
 "use client";
 
 import { site } from "@/content/site";
-import Reveal from "./Reveal";
+import Reveal, { StaggerGroup, StaggerItem } from "./Reveal";
 import { AutomationIcon, WebsiteIcon, IntegrationIcon } from "./Icons";
 import type { SVGProps } from "react";
 
@@ -22,28 +22,29 @@ export default function Capabilities() {
         <p className="eyebrow mb-4">What we build</p>
         <h2
           id="capabilities-heading"
-          className="max-w-2xl font-display text-3xl font-semibold tracking-tight text-balance md:text-4xl"
+          className="max-w-2xl font-display text-4xl font-light leading-[1.1] tracking-tight text-balance md:text-5xl"
         >
           Three pillars. One goal — get the system running without you.
         </h2>
       </Reveal>
 
-      <ul className="mt-16 grid gap-6 md:grid-cols-3">
-        {site.capabilities.map((cap, i) => {
+      <StaggerGroup className="mt-16 grid gap-6 md:grid-cols-3" stagger={0.12}>
+        {site.capabilities.map((cap) => {
           const Icon = iconFor[cap.id];
           return (
-            <Reveal as="li" key={cap.id} delay={i * 0.08}>
-              <article className="panel h-full p-8 transition-colors duration-300 ease-soft hover:border-signal/40">
+            <StaggerItem key={cap.id} className="h-full">
+              <article
+                className="panel group h-full p-8 transition-all duration-300 ease-soft hover:-translate-y-1 hover:border-saffron/40"
+                data-cursor="hover"
+              >
                 <span
-                  className="mb-6 inline-flex h-12 w-12 items-center justify-center rounded-md border border-line bg-surface-2 text-signal"
-                  style={{ boxShadow: "0 0 24px -8px var(--signal)" }}
+                  className="mb-6 inline-flex h-12 w-12 items-center justify-center rounded-md border border-line bg-surface-2 text-saffron"
+                  style={{ boxShadow: "0 0 28px -10px var(--saffron)" }}
                 >
                   {Icon && <Icon className="h-6 w-6" />}
                 </span>
-                <p className="font-mono text-2xs uppercase tracking-widest text-muted">
-                  {cap.kicker}
-                </p>
-                <h3 className="mt-2 font-display text-2xl font-semibold tracking-tight">
+                <p className="eyebrow-muted">{cap.kicker}</p>
+                <h3 className="mt-2 font-display text-2xl font-medium tracking-tight">
                   {cap.title}
                 </h3>
                 <p className="mt-4 text-sm leading-relaxed text-muted">
@@ -53,21 +54,21 @@ export default function Capabilities() {
                   {cap.points.map((p) => (
                     <li
                       key={p}
-                      className="flex items-start gap-3 text-sm text-text"
+                      className="flex items-start gap-3 text-sm text-bone"
                     >
                       <span
                         aria-hidden="true"
-                        className="mt-1.5 inline-block h-1.5 w-1.5 flex-none rounded-full bg-signal"
+                        className="mt-1.5 inline-block h-1.5 w-1.5 flex-none rounded-full bg-saffron"
                       />
                       {p}
                     </li>
                   ))}
                 </ul>
               </article>
-            </Reveal>
+            </StaggerItem>
           );
         })}
-      </ul>
+      </StaggerGroup>
     </section>
   );
 }
